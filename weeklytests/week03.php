@@ -30,6 +30,7 @@
   }
   
 if($CustomerID != ''){
+   echo ("Something was input inside Customer ID")."<br>";
   $sql = "SELECT ordersnew.OrderID, ordersnew.UserID, ordersnew.ConfirmationNumber, ordersnew.ItemID, ordersnew.Message, accounts.FNAME, 
           accounts.LNAME, accounts.ADDRESS, accounts.CITY, accounts.ZIP, accounts.COUNTRY FROM ordersnew 
           INNER JOIN accounts ON ordersnew.UserID = accounts.CUST_ID WHERE accounts.CUST_ID = '$CustomerID'";
@@ -46,10 +47,16 @@ if($CustomerID != ''){
   }
 }
   //here we set the querie depending on the input
-
+if($sql == null){
+   echo ("SQL is null")."<br>";
+}
 
 //set the result depending on the querie
 $result = $con->query($sql);
+  
+  if($result == null){
+   echo ("Result is null")."<br>";
+}
 //magic happens and we put all the stuff in an ordered table
 echo "<table border='1'>";
 

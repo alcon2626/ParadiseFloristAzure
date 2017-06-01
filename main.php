@@ -27,8 +27,9 @@
 		<li><a href="section/section6.html" data-transition="flip">Arrangement 6</a></li>
 		<li><a href="section/section7.html" data-transition="flip">Arrangement 7</a></li>
 		<li><a href="section/section8.html" data-transition="flip">Arrangement 8</a></li>
+		<li><a href="weeklytests/week03.html" data-transition="flip">Order History</a></li>
 		<li><a href="section/contactus.html" data-transition="flip">Contact US</a></li>
-		<li><a href="weeklytests/week02.html" data-transition="flip">Weekly Tests</a></li>
+		<li><a href="weeklytests/week03.html" data-transition="flip">Weekly Tests</a></li>
   </ul>
 
 	<!-- END OF SECTION -->
