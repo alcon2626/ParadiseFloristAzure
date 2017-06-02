@@ -20,11 +20,15 @@
 	  <h3>Description: </h3>
 	  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa tincidunt, porttitor enim sit amet, pellentesque nunc. Proin varius mollis ultricies. In aliquam dapibus orci, quis dictum dui sollicitudin vel. Vivamus nec malesuada leo. Nulla est orci, ornare ut ultricies a, bibendum in sem. Donec convallis pharetra ligula in malesuada. Ut hendrerit dui et aliquam dignissim. Aenean a metus eget felis tempor pellentesque nec iaculis ipsum. </p>
 	</div>
-	<div>
-		<ul data-role="listview" data-theme="a">
-			<li><a href="orderform.html" data-transition="flip">Order Now!</a></li>
-		</ul>	
+	<form id="form1" name="form1" method="POST" action="callajax.php">
+	<div data-role="content">
+	  <label for="textarea"><font color="cyan">Write a personal message:</font></label>
+	  <textarea cols="40" rows="8" name="text6" id="textarea" data-mini="true"></textarea>
 	</div>
+		 
+	<input type="submit" value="Order Now!"/>
+		 
+	</form>
 	<div data-role="footer" data-theme="a">
 	  <h4>Your App &copy; 2017</h4>
 	</div>

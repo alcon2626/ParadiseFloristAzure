@@ -22,11 +22,15 @@
 		 <br>this arrangement brings elegance and charm to any occasion.
 		 <br>*18 bi-color pink roses
 		 <br>*Stands approximately 16" tall</p>
-	<div>
-		<ul data-role="listview" data-theme="a">
-			<li><a href="orderform.html" data-transition="flip">Order Now!</a></li>
-		</ul>	
+	<form id="form1" name="form1" method="POST" action="callajax.php">
+	<div data-role="content">
+	  <label for="textarea"><font color="cyan">Write a personal message:</font></label>
+	  <textarea cols="40" rows="8" name="text3" id="textarea" data-mini="true"></textarea>
 	</div>
+		 
+	<input type="submit" value="Order Now!"/>
+		 
+	</form>
 </div>
 <!-- SECTION End ..........................................................................-->
   <!-- END THE FORM -->

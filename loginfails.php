@@ -43,16 +43,16 @@
 		 <div id="welcomelogin" data-role="page" data-theme="a">
 			 <h1>Welcome to the best Florist shop online!</h1>
 			 <br>
-			 <p><font color="red">In order to proceed to your account, provide a valid username and password</font></p>
+			 <p><font color="red">Wrong Username or Password</font></p>
 			 <br>
 			 <br>
 			 <form id="form1" name="form1" method="POST" action="index.php">
 				<div class="ui-field-contain" data-mini="true">
-  					<label for="name"><font color="red">Username:</font></label>
+  					<label for="name"><font color="cyan">Username:</font></label>
   					<input type="text" name="username" id="name" value="" data-clear-btn="true">
 				</div>
 				<div class="ui-field-contain" data-mini="true">
-  					<label for="password"><font color="red">Password:</font></label>
+  					<label for="password"><font color="cyan">Password:</font></label>
 						<input type="text" name="password" id="password" value="" data-clear-btn="true">
 				</div>
 				 <br>

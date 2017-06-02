@@ -1,81 +1,90 @@
 <html lang="en">
 <head>
-    <title>PHP Data Connection Test</title>
+  <meta charset="UTF-8">
+  <title>Oder Information</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="https://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css"/>
+  <link href="styles/custom.css" rel="stylesheet" type="text/css">
+  <script src="https://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js" type="text/javascript"></script>
 </head>
 <body>
-<h1>Order: </h1>
+  <div data-role="page" data-theme="a" data-add-back-btn="true">
+  <div data-role="header" data-theme="a">
+	  <h1>Order Information</h1>
+		</div>
+  <div>
 <?php
-    $counter = 0;
-    $UserFName = $_POST['fname'];
-    $UserLName = $_POST['lname'];
-    $personalMessage = $_POST['textarea'];
-    $radio_button_one = $_POST['ans'];
-    
-    //$("input[name=radio1_0]:checked").val()."<br>";
-    echo("First Name: " . $UserFName)."<br>";
-    echo("Last Name: " . $UserLName)."<br>";
-    echo("Personal Message: " . $personalMessage)."<br>";
-    echo("Radio Selected: " . $radio_button_one)."<br>";
-  //Connection parameters
-  $servername = "us-cdbr-azure-central-a.cloudapp.net";
-  $username = "beb51e81308fbf";
-  $password = "6e9b3499";
-  $dbname = "paradisefloristdb";
-  //stablish connection
-  $con = new mysqli($servername, $username, $password, $dbname);
-  // Check connection
-  if (mysqli_connect_errno())
-  {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }else{
-    echo ("Sucess to connect to MySQL")."<br>";
+  include('../session.php');
+  $user = $_SESSION['login_user'];
+  $UserID;
+	$Confirmation;
+  // Turn off all error reporting
+  error_reporting(0);
+  $Arrangement = 0;
+  try{
+    if($_POST['text1'] != null){
+      $personalMessage = $_POST['text1'];
+      $Arrangement = 1;                  }elseif($_POST['text2'] != null){
+                                                 $personalMessage = $_POST['text2'];
+                                                 $Arrangement = 2;                  }elseif($_POST['text3'] != null){
+                                                                                            $personalMessage = $_POST['text3'];
+                                                                                            $Arrangement = 3;
+    }elseif($_POST['text4'] != null){
+      $personalMessage = $_POST['text4'];
+      $Arrangement = 4;                  }elseif($_POST['text5'] != null){
+                                                 $personalMessage = $_POST['text5'];
+                                                  $Arrangement = 5;                 }elseif($_POST['text6'] != null){
+                                                                                            $personalMessage = $_POST['text6'];
+                                                                                            $Arrangement = 6;
+    }elseif($_POST['text7'] != null){
+      $personalMessage = $_POST['text7'];
+      $Arrangement = 7;                  }elseif($_POST['text8'] != null){
+                                                 $personalMessage = $_POST['text8'];
+                                                  $Arrangement = 8;
+    }
+  }catch(Exception $e){
+    $personalMessage = '';
+    echo 'Message: ' .$e->getMessage();
   }
   
-  
-  //here we set the querie depending on the input
-if($UserLName == '' && $UserFName == ''){ //nothing is input
-  echo ("Please input a name or last name to continue")."<br>";
-  $sql = "SELECT * FROM `accounts`WHERE  0";
-}elseif($UserLName != '' && $UserFName == ''){ // if only user lastname is submited
-  $sql = "SELECT * FROM `accounts`WHERE LNAME = '$UserLName'";
-}elseif($UserFName != '' && $UserLName == ''){ // if only user firstname is submited
-  $sql = "SELECT * FROM `accounts`WHERE FNAME = '$UserFName'";
-}elseif($UserLName != '' && $UserFName != ''){ // both are submited
-  $sql = "SELECT * FROM `accounts` WHERE LNAME = '$UserLName' OR FNAME = '$UserFName'";
-}
-
-//set the result depending on the querie
-$result = $con->query($sql);
-//magic happens and we put all the stuff in an ordered table
-echo "<table border='1'>";
-
-$i = 0;
-while($row = $result->fetch_assoc()){
-    if ($i == 0) {
-      $i++;
-      echo "<tr>";
-      foreach ($row as $key => $value) {
-        echo "<th>" . $key . "</th>";
-      }
-      echo "</tr>";
-    }
-    echo "<tr>";
+    
+  //$("input[name=radio1_0]:checked").val()."<br>";
+  //Connection 
+    $sql = "SELECT `CUST_ID` FROM accounts WHERE `LOGIN` = '$user'";
+    $result = mysqli_query($db,$sql);
+    $row = $result->fetch_assoc();
     foreach ($row as $value) {
-      $counter++;
-      if($counter == 13){ 
-        echo "<td>" . "<a href=http://media.animevice.com/uploads/0/4178/144412-aizen235_super.jpg>$value</a>" . "</td>";
-        $counter = 0;
-      }
-      else{
-        echo "<td>" . $value . "</td>";
-      }
+            $UserID = $value;
     }
-    echo "</tr>";
-}
-echo "</table>";
-
-mysqli_close($con);
+    
+    echo("Current user: " . $user)."<br>";
+    echo("Arrangement: " . $Arrangement)."<br>";
+    echo("Personal Message: " . $personalMessage)."<br>";
+    echo("Current userID: " . $UserID)."<br>";
+		$Confirmation = rand(1000,10000);
+    
+    $sql = "INSERT INTO `ordersnew`(`UserID`, `Message`, `ItemID`, `ConfirmationNumber`) VALUES ('$UserID','$personalMessage','$Arrangement', '$Confirmation')";
+    if (!($stmt = mysqli_prepare($db, $sql))) {
+        die('Error: ' . mysqli_error($db));
+    }
+    if (!mysqli_stmt_execute($stmt)) {
+    die('Error: ' . mysqli_stmt_error($stmt));
+    }else{
+      echo("Success Inserting New Record")."<br>";
+    }
+    
   
 ?>
+		<div style="position:relative;text-align:center;" class="ui-body ui-body-solo">
+						<a href="../main.php" data-role="button" data-inline="true" data-theme="b">Return </a>
+	</div>
+  <!-- END OF SECTION -->
+	<div data-role="footer" data-theme="a">
+	  <h4>Leonel Gonzalez &copy; 2017</h4>
+	</div>
+ </div>
+ </div>
+	
 </body>
 </html>

@@ -23,11 +23,15 @@
 				<br>yellow button mums and fresh green bupleurum and pittosporum in a simple glass gathering vase.
 				<br>*Orientation: All-Around </p>
 	</div>
-	<div>
-		<ul data-role="listview" data-theme="a">
-			<li><a href="orderform.html" data-transition="flip">Order Now!</a></li>
-		</ul>	
+	<form id="form1" name="form1" method="POST" action="callajax.php">
+	<div data-role="content">
+	  <label for="textarea"><font color="cyan">Write a personal message:</font></label>
+	  <textarea cols="40" rows="8" name="text2" id="textarea" data-mini="true"></textarea>
 	</div>
+		 
+	<input type="submit" value="Order Now!"/>
+		 
+	</form>
 	<div data-role="footer" data-theme="a">
 	  <h4>Your App &copy; 2017</h4>
 	</div>

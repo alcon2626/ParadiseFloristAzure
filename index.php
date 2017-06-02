@@ -8,13 +8,14 @@
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
       //query
 		 if($mypassword != '' && $myusername != ''){
-			 $sql = "SELECT * FROM `accounts` WHERE PASSWORD = '$mypassword' OR LOGIN = '$myusername'";
+			 $sql = "SELECT * FROM `accounts` WHERE PASSWORD = '$mypassword' AND LOGIN = '$myusername'";
       }else{
 				 ob_start();
          header("location: loginfails.php");
 			   ob_end_flush();
     		 flush(); 
 		 }
+		 
 		 $result = mysqli_query($db,$sql);
 		 if($row = $result->fetch_assoc() != null){
          $_SESSION['login_user'] = $myusername;
@@ -50,11 +51,11 @@
 			 <br>
 			 <form id="form1" name="form1" method="POST" action="index.php">
 				<div class="ui-field-contain" data-mini="true">
-  					<label for="name"><font color="red">Username:</font></label>
+  					<label for="name"><font color="cyan">Username:</font></label>
   					<input type="text" name="username" id="name" value="" data-clear-btn="true">
 				</div>
 				<div class="ui-field-contain" data-mini="true">
-  					<label for="password"><font color="red">Password:</font></label>
+  					<label for="password"><font color="cyan">Password:</font></label>
 						<input type="text" name="password" id="password" value="" data-clear-btn="true">
 				</div>
 				 <br>
@@ -63,7 +64,7 @@
 				<div style="position:relative;text-align:center;" class="ui-body ui-body-solo">
 						<input type="submit" value="Login" data-inline="true"/>
 						<a href="signup.php" data-role="button" data-inline="true" data-theme="b">Signup Now!</a>
-				</div>
+				 </div>
 			</form>
 			 <br>
 			 <br>

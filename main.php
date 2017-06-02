@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Paradise Florist Inc</title>
+	<title>Paradise Florist Inc</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link href="https://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css"/>
 <link href="styles/custom.css" rel="stylesheet" type="text/css">
@@ -27,9 +27,10 @@
 		<li><a href="section/section6.html" data-transition="flip">Arrangement 6</a></li>
 		<li><a href="section/section7.html" data-transition="flip">Arrangement 7</a></li>
 		<li><a href="section/section8.html" data-transition="flip">Arrangement 8</a></li>
-		<li><a href="weeklytests/week03.html" data-transition="flip">Order History</a></li>
+		<li><a href="orderhistory.php" data-transition="flip">Order History</a></li>
 		<li><a href="section/contactus.html" data-transition="flip">Contact US</a></li>
 		<li><a href="weeklytests/week03.html" data-transition="flip">Weekly Tests</a></li>
+		<li><a href="logout.php">Log out</a></li>
   </ul>
 
 	<!-- END OF SECTION -->

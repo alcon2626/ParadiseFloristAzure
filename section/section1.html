@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -25,11 +25,15 @@
 			<br>*Includes greenery
 			<br>*Stands approximately 20" tall</p>
 	</div>
-	<div>
-		<ul data-role="listview" data-theme="a">
-			<li><a href="orderform.html" data-transition="flip">Order Now!</a></li>
-		</ul>	
+	<form id="form1" name="form1" method="POST" action="callajax.php">
+	<div data-role="content">
+	  <label for="textarea"><font color="cyan">Write a personal message:</font></label>
+	  <textarea cols="40" rows="8" name="text1" id="textarea" data-mini="true"></textarea>
 	</div>
+		 
+	<input type="submit" value="Order Now!"/>
+		 
+	</form>
 	<div data-role="footer" data-theme="a">
 	  <h4>Your App &copy; 2017</h4>
 	</div>
