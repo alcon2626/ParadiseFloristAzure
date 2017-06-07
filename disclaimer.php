@@ -39,7 +39,6 @@
       </div>
       <div style="position:relative;text-align:center;" class="ui-body ui-body-solo">
 						<a href="main.php" data-role="button" data-inline="true" data-theme="b">Continue</a>
-						<a href="logout.php" data-role="button" data-inline="true" data-theme="b">Leave</a>
 			</div>
 			</form>
 			 <br>

@@ -32,8 +32,18 @@
 		<li><a href="orderhistory.php" data-transition="flip">Order History</a></li>
 		<li><a href="section/contactus.html" data-transition="flip">Contact US</a></li>
 		<li><a href="weeklytests/week03.html" data-transition="flip">Weekly Tests</a></li>
-		<li><a href="logout.php">Log out</a></li>
+		<li><a href="logout.php" onclick="signOut();">Log out</a></li>
   </ul>
+	<script>
+  	function signOut() {
+   		var auth2 = gapi.auth2.getAuthInstance();
+				if(auth2 != null){
+					auth2.signOut().then(function () {
+      		console.log('User signed out.');
+    		});
+			}
+  	}
+	</script>
 
 	<!-- END OF SECTION -->
 	<div data-role="footer" data-theme="a">

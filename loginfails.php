@@ -2,35 +2,48 @@
    include("Config.php");
    session_start();
    
+      $GoogleName = $_GET['name'];
+		  if($GoogleName != null){
+				$_SESSION['login_user'] = $GoogleName;
+				ob_start();
+         header("location: disclaimer.php");
+			   ob_end_flush();
+    		 flush();
+				$GoogleName = null;
+			}
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
+		  
+		  
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
       //query
 		 if($mypassword != '' && $myusername != ''){
-			 $sql = "SELECT * FROM `accounts` WHERE PASSWORD = '$mypassword' OR LOGIN = '$myusername'";
+			 $sql = "SELECT * FROM `accounts` WHERE PASSWORD = '$mypassword' AND LOGIN = '$myusername'";
       }else{
-				
+				 ob_start();
+         header("location: loginfails.php");
+			   ob_end_flush();
+    		 flush(); 
 		 }
+		 
 		 $result = mysqli_query($db,$sql);
 		 if($row = $result->fetch_assoc() != null){
          $_SESSION['login_user'] = $myusername;
 			   ob_start();
-         header("location: welcome.php");
+         header("location: disclaimer.php");
 			   ob_end_flush();
     		 flush();  
   		 }else{
-    		 ob_end_clean();
-    		 $url='http://inisope-inc--alcon2626842133.codeanyapp.com/ParadiseFlorist/index_login_fail.html';
     		 ob_start();
-    		 header('Location: '.$url);
-    		 ob_end_flush();
+         header("location: loginfails.php");
+			   ob_end_flush();
     		 flush();            // Unless both are called !
   		}
    }
 ?>
 <html>
-<head>
+   <head>
 	 <meta charset='UTF-8'>
 	 <title>Paradise Florist Inc</title>
 	 <meta name='viewport' content='width=device-width,initial-scale=1' />
@@ -38,12 +51,16 @@
 	 <link href='styles/custom.css' rel='stylesheet' type='text/css'>
 	 <script src='https://code.jquery.com/jquery-1.8.3.min.js' type='text/javascript'></script>
 	 <script src='https://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js' type='text/javascript'></script>
-</head>  
+	 <script src="https://apis.google.com/js/platform.js" async defer></script>
+	 <meta name="google-signin-scope" content="profile email">
+   <meta name="google-signin-client_id" content="101492973237-s4r6ehlphouh92beuol7c9b1vn9h4kfj.apps.googleusercontent.com">
+	 </head> 
+   
    <body bgcolor = "#FFFFFF">
 		 <div id="welcomelogin" data-role="page" data-theme="a">
 			 <h1>Welcome to the best Florist shop online!</h1>
 			 <br>
-			 <p><font color="red">Wrong Username or Password</font></p>
+			 <p><font color="red">Wrong username and password</font></p>
 			 <br>
 			 <br>
 			 <form id="form1" name="form1" method="POST" action="index.php">
@@ -60,16 +77,26 @@
 				 <br>
 				<div style="position:relative;text-align:center;" class="ui-body ui-body-solo">
 						<input type="submit" value="Login" data-inline="true"/>
-						<a href="signup.php" data-role="button" data-inline="true" data-theme="b">Signup Now!</a>
+						<a href="signup.php" data-role="button" data-inline="true" data-theme="b">Signup!</a>
+					  <a class="g-signin2" data-role="button" data-onsuccess="onSignIn" data-inline="true" data-theme="dark"></a>
+					  <script>
+      				function onSignIn(googleUser) {
+							var profile = googleUser.getBasicProfile();
+							var Username = profile.getName();
+								if(Username != null){
+									window.location.href = "index.php?name=" + Username;
+								}
+								Username = null;
+      				}
+           </script>
 				</div>
 			</form>
-			 <br>
-			 <br>
-			 <br>
-			 <div data-role="footer" data-theme="a">
+			<br>
+			<br>
+			<br>
+			<div data-role="footer" data-theme="a">
 	  			<h4>Leonel Gonzalez &copy; 2017</h4>
-			 </div>
+			</div>
 		</div>
    </body>
-
 </html>

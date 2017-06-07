@@ -2,8 +2,19 @@
    include("Config.php");
    session_start();
    
+      $GoogleName = $_GET['name'];
+		  if($GoogleName != null){
+				$_SESSION['login_user'] = $GoogleName;
+				$GoogleName = null;
+				ob_start();
+         header("location: disclaimer.php");
+			   ob_end_flush();
+    		 flush();
+			}
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
+		  
+		  
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
       //query
@@ -41,6 +52,7 @@
 	 <script src='https://code.jquery.com/jquery-1.8.3.min.js' type='text/javascript'></script>
 	 <script src='https://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js' type='text/javascript'></script>
 	 <script src="https://apis.google.com/js/platform.js" async defer></script>
+	 <meta name="google-signin-scope" content="profile email">
    <meta name="google-signin-client_id" content="101492973237-s4r6ehlphouh92beuol7c9b1vn9h4kfj.apps.googleusercontent.com">
 	 </head> 
    
@@ -66,17 +78,20 @@
 				<div style="position:relative;text-align:center;" class="ui-body ui-body-solo">
 						<input type="submit" value="Login" data-inline="true"/>
 						<a href="signup.php" data-role="button" data-inline="true" data-theme="b">Signup!</a>
-					  <a class="g-signin2" data-role="button" data-onsuccess="onSignIn" data-inline="true"></a>
+					  <a class="g-signin2" data-role="button" data-onsuccess="onSignIn" data-inline="true" data-theme="dark"></a>
+					  <script>
+      				function onSignIn(googleUser) {
+							var profile = googleUser.getBasicProfile();
+							var Username = profile.getName();
+								if(Username != null){
+									window.location.href = "index.php?name=" + Username;
+									Username = null;
+					        }
+								}
+           </script>
 				</div>
 			</form>
 			<br>
-			 <script>
-				 function onSignIn(googleUser) {
-  				var profile = googleUser.getBasicProfile();
-  				console.log('Name: ' + profile.getName());
-					 echo ('Name: ' + profile.getName())."<br>";
-       }
-			 </script>
 			<br>
 			<br>
 			<div data-role="footer" data-theme="a">
