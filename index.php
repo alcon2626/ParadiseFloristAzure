@@ -70,6 +70,13 @@
 				</div>
 			</form>
 			<br>
+			 <script>
+				 function onSignIn(googleUser) {
+  				var profile = googleUser.getBasicProfile();
+  				console.log('Name: ' + profile.getName());
+					 echo ('Name: ' + profile.getName())."<br>";
+       }
+			 </script>
 			<br>
 			<br>
 			<div data-role="footer" data-theme="a">
