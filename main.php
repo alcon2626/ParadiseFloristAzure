@@ -11,6 +11,8 @@
 <link href="styles/custom.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="https://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js" type="text/javascript"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="101492973237-s4r6ehlphouh92beuol7c9b1vn9h4kfj.apps.googleusercontent.com">
 </head> 
 <body>
 <!-- SECTION BUTTONS ..........................................................................-->
