@@ -4,6 +4,7 @@
   <title>Oder History</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link href="https://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css"/>
+	<link rel="manifest" href="/manifest.json">
   <link href="styles/custom.css" rel="stylesheet" type="text/css">
   <script src="https://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>
   <script src="https://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js" type="text/javascript"></script>
