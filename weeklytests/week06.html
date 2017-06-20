@@ -35,7 +35,6 @@
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
-          <meta http-equiv=”refresh” content=”0" >
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
               lat: position.coords.latitude,
