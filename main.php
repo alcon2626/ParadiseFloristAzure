@@ -32,7 +32,7 @@
 		<li><a href="section/section8.html" data-transition="flip">Arrangement 8</a></li>
 		<li><a href="orderhistory.php" data-transition="flip">Order History</a></li>
 		<li><a href="section/contactus.html" data-transition="flip">Contact US</a></li>
-		<li><a href="weeklytests/week03.html" data-transition="flip">Weekly Tests</a></li>
+		<li><a href="weeklytests/week06.html" data-transition="flip">Weekly Tests</a></li>
 		<li><a href="logout.php" onclick="signOut();">Log out</a></li>
   </ul>
 	<script>
