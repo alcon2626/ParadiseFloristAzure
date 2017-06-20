@@ -2,9 +2,21 @@
 <html>
   <head>
     <title>Geolocation</title>
-    <meta http-equiv="refresh" content="5" >
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <script type="text/javascript">
+    $(document).ready(function(){    
+      //Check if the current URL contains '#'
+      if(document.URL.indexOf("#")==-1){
+        // Set the URL to whatever it was plus "#".
+        url = document.URL+"#";
+        location = "#";
+
+        //Reload the page
+        location.reload(true);
+      }
+    });
+</script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
