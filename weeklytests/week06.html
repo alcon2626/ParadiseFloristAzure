@@ -4,19 +4,6 @@
     <title>Geolocation</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <script type="text/javascript">
-    $(document).ready(function(){    
-      //Check if the current URL contains '#'
-      if(document.URL.indexOf("#")==-1){
-        // Set the URL to whatever it was plus "#".
-        url = document.URL+"#";
-        location = "#";
-
-        //Reload the page
-        location.reload(true);
-      }
-    });
-</script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -48,6 +35,7 @@
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
+          <meta http-equiv=”refresh” content=”0" >
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
               lat: position.coords.latitude,
@@ -55,7 +43,7 @@
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
+            infoWindow.setContent('Now I know where you are =)');
             infoWindow.open(map);
             map.setCenter(pos);
           }, function() {
